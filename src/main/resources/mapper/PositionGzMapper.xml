@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.online_re.mapper.PositionGzMapper" >
+  <resultMap id="BaseResultMap" type="com.example.online_re.domain.PositionGz" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="category1" property="category1" jdbcType="INTEGER" />
+    <result column="category2" property="category2" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="nature" property="nature" jdbcType="VARCHAR" />
+    <result column="high" property="high" jdbcType="INTEGER" />
+    <result column="low" property="low" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="work_time" property="workTime" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="VARCHAR" />
+    <result column="attacts" property="attacts" jdbcType="VARCHAR" />
+    <result column="describe" property="describe" jdbcType="VARCHAR" />
+    <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
+    <result column="position_id" property="positionId" jdbcType="INTEGER" />
+    <result column="hot_position" property="hotPosition" jdbcType="INTEGER" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="data" property="data" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, category1, category2, name, nature, high, low, address, work_time, education, 
+    attacts, describe, creation_time, position_id, hot_position, company_id, data
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from position_gz
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from position_gz
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.online_re.domain.PositionGz" >
+    insert into position_gz (id, category1, category2, 
+      name, nature, high, 
+      low, address, work_time, 
+      education, attacts, describe, 
+      creation_time, position_id, hot_position, 
+      company_id, data)
+    values (#{id,jdbcType=INTEGER}, #{category1,jdbcType=INTEGER}, #{category2,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{nature,jdbcType=VARCHAR}, #{high,jdbcType=INTEGER}, 
+      #{low,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{workTime,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{attacts,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, 
+      #{creationTime,jdbcType=TIMESTAMP}, #{positionId,jdbcType=INTEGER}, #{hotPosition,jdbcType=INTEGER}, 
+      #{companyId,jdbcType=INTEGER}, #{data,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.online_re.domain.PositionGz" >
+    insert into position_gz
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="category1 != null" >
+        category1,
+      </if>
+      <if test="category2 != null" >
+        category2,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="nature != null" >
+        nature,
+      </if>
+      <if test="high != null" >
+        high,
+      </if>
+      <if test="low != null" >
+        low,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="workTime != null" >
+        work_time,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="attacts != null" >
+        attacts,
+      </if>
+      <if test="describe != null" >
+        describe,
+      </if>
+      <if test="creationTime != null" >
+        creation_time,
+      </if>
+      <if test="positionId != null" >
+        position_id,
+      </if>
+      <if test="hotPosition != null" >
+        hot_position,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="data != null" >
+        data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="category1 != null" >
+        #{category1,jdbcType=INTEGER},
+      </if>
+      <if test="category2 != null" >
+        #{category2,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nature != null" >
+        #{nature,jdbcType=VARCHAR},
+      </if>
+      <if test="high != null" >
+        #{high,jdbcType=INTEGER},
+      </if>
+      <if test="low != null" >
+        #{low,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="workTime != null" >
+        #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="attacts != null" >
+        #{attacts,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null" >
+        #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="positionId != null" >
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="hotPosition != null" >
+        #{hotPosition,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="data != null" >
+        #{data,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.online_re.domain.PositionGz" >
+    update position_gz
+    <set >
+      <if test="category1 != null" >
+        category1 = #{category1,jdbcType=INTEGER},
+      </if>
+      <if test="category2 != null" >
+        category2 = #{category2,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nature != null" >
+        nature = #{nature,jdbcType=VARCHAR},
+      </if>
+      <if test="high != null" >
+        high = #{high,jdbcType=INTEGER},
+      </if>
+      <if test="low != null" >
+        low = #{low,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="workTime != null" >
+        work_time = #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="attacts != null" >
+        attacts = #{attacts,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null" >
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        creation_time = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="positionId != null" >
+        position_id = #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="hotPosition != null" >
+        hot_position = #{hotPosition,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="data != null" >
+        data = #{data,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.online_re.domain.PositionGz" >
+    update position_gz
+    set category1 = #{category1,jdbcType=INTEGER},
+      category2 = #{category2,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      nature = #{nature,jdbcType=VARCHAR},
+      high = #{high,jdbcType=INTEGER},
+      low = #{low,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      work_time = #{workTime,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      attacts = #{attacts,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR},
+      creation_time = #{creationTime,jdbcType=TIMESTAMP},
+      position_id = #{positionId,jdbcType=INTEGER},
+      hot_position = #{hotPosition,jdbcType=INTEGER},
+      company_id = #{companyId,jdbcType=INTEGER},
+      data = #{data,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

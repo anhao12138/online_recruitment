@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.online_re.mapper.DevelopmentMapper" >
+  <resultMap id="BaseResultMap" type="com.example.online_re.domain.Development" >
+    <id column="D_id" property="dId" jdbcType="INTEGER" />
+    <result column="D_name" property="dName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    D_id, D_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from development
+    where D_id = #{dId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from development
+    where D_id = #{dId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.online_re.domain.Development" >
+    insert into development (D_id, D_name)
+    values (#{dId,jdbcType=INTEGER}, #{dName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.online_re.domain.Development" >
+    insert into development
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dId != null" >
+        D_id,
+      </if>
+      <if test="dName != null" >
+        D_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dId != null" >
+        #{dId,jdbcType=INTEGER},
+      </if>
+      <if test="dName != null" >
+        #{dName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.online_re.domain.Development" >
+    update development
+    <set >
+      <if test="dName != null" >
+        D_name = #{dName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where D_id = #{dId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.online_re.domain.Development" >
+    update development
+    set D_name = #{dName,jdbcType=VARCHAR}
+    where D_id = #{dId,jdbcType=INTEGER}
+  </update>
+</mapper>

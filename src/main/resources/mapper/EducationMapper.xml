@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.online_re.mapper.EducationMapper" >
+  <resultMap id="BaseResultMap" type="com.example.online_re.domain.Education" >
+    <id column="E_id" property="eId" jdbcType="INTEGER" />
+    <result column="E_name" property="eName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    E_id, E_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from education
+    where E_id = #{eId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from education
+    where E_id = #{eId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.online_re.domain.Education" >
+    insert into education (E_id, E_name)
+    values (#{eId,jdbcType=INTEGER}, #{eName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.online_re.domain.Education" >
+    insert into education
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="eId != null" >
+        E_id,
+      </if>
+      <if test="eName != null" >
+        E_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="eId != null" >
+        #{eId,jdbcType=INTEGER},
+      </if>
+      <if test="eName != null" >
+        #{eName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.online_re.domain.Education" >
+    update education
+    <set >
+      <if test="eName != null" >
+        E_name = #{eName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where E_id = #{eId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.online_re.domain.Education" >
+    update education
+    set E_name = #{eName,jdbcType=VARCHAR}
+    where E_id = #{eId,jdbcType=INTEGER}
+  </update>
+</mapper>

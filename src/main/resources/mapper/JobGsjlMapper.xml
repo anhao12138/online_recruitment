@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.online_re.mapper.JobGsjlMapper" >
+  <resultMap id="BaseResultMap" type="com.example.online_re.domain.JobGsjl" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="zwlb" property="zwlb" jdbcType="VARCHAR" />
+    <result column="zwmc" property="zwmc" jdbcType="VARCHAR" />
+    <result column="ssbm" property="ssbm" jdbcType="VARCHAR" />
+    <result column="zdyxfw" property="zdyxfw" jdbcType="VARCHAR" />
+    <result column="gzcs" property="gzcs" jdbcType="VARCHAR" />
+    <result column="gzjy" property="gzjy" jdbcType="VARCHAR" />
+    <result column="xlyq" property="xlyq" jdbcType="VARCHAR" />
+    <result column="zwyh" property="zwyh" jdbcType="VARCHAR" />
+    <result column="zwms" property="zwms" jdbcType="VARCHAR" />
+    <result column="gzdz" property="gzdz" jdbcType="VARCHAR" />
+    <result column="jsyx" property="jsyx" jdbcType="VARCHAR" />
+    <result column="shoucang" property="shoucang" jdbcType="VARCHAR" />
+    <result column="zgyxfw" property="zgyxfw" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, zwlb, zwmc, ssbm, zdyxfw, gzcs, gzjy, xlyq, zwyh, zwms, gzdz, jsyx, shoucang, 
+    zgyxfw
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from job_gsjl
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from job_gsjl
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.online_re.domain.JobGsjl" >
+    insert into job_gsjl (id, zwlb, zwmc, 
+      ssbm, zdyxfw, gzcs, 
+      gzjy, xlyq, zwyh, zwms, 
+      gzdz, jsyx, shoucang, 
+      zgyxfw)
+    values (#{id,jdbcType=INTEGER}, #{zwlb,jdbcType=VARCHAR}, #{zwmc,jdbcType=VARCHAR}, 
+      #{ssbm,jdbcType=VARCHAR}, #{zdyxfw,jdbcType=VARCHAR}, #{gzcs,jdbcType=VARCHAR}, 
+      #{gzjy,jdbcType=VARCHAR}, #{xlyq,jdbcType=VARCHAR}, #{zwyh,jdbcType=VARCHAR}, #{zwms,jdbcType=VARCHAR}, 
+      #{gzdz,jdbcType=VARCHAR}, #{jsyx,jdbcType=VARCHAR}, #{shoucang,jdbcType=VARCHAR}, 
+      #{zgyxfw,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.online_re.domain.JobGsjl" >
+    insert into job_gsjl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zwlb != null" >
+        zwlb,
+      </if>
+      <if test="zwmc != null" >
+        zwmc,
+      </if>
+      <if test="ssbm != null" >
+        ssbm,
+      </if>
+      <if test="zdyxfw != null" >
+        zdyxfw,
+      </if>
+      <if test="gzcs != null" >
+        gzcs,
+      </if>
+      <if test="gzjy != null" >
+        gzjy,
+      </if>
+      <if test="xlyq != null" >
+        xlyq,
+      </if>
+      <if test="zwyh != null" >
+        zwyh,
+      </if>
+      <if test="zwms != null" >
+        zwms,
+      </if>
+      <if test="gzdz != null" >
+        gzdz,
+      </if>
+      <if test="jsyx != null" >
+        jsyx,
+      </if>
+      <if test="shoucang != null" >
+        shoucang,
+      </if>
+      <if test="zgyxfw != null" >
+        zgyxfw,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="zwlb != null" >
+        #{zwlb,jdbcType=VARCHAR},
+      </if>
+      <if test="zwmc != null" >
+        #{zwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ssbm != null" >
+        #{ssbm,jdbcType=VARCHAR},
+      </if>
+      <if test="zdyxfw != null" >
+        #{zdyxfw,jdbcType=VARCHAR},
+      </if>
+      <if test="gzcs != null" >
+        #{gzcs,jdbcType=VARCHAR},
+      </if>
+      <if test="gzjy != null" >
+        #{gzjy,jdbcType=VARCHAR},
+      </if>
+      <if test="xlyq != null" >
+        #{xlyq,jdbcType=VARCHAR},
+      </if>
+      <if test="zwyh != null" >
+        #{zwyh,jdbcType=VARCHAR},
+      </if>
+      <if test="zwms != null" >
+        #{zwms,jdbcType=VARCHAR},
+      </if>
+      <if test="gzdz != null" >
+        #{gzdz,jdbcType=VARCHAR},
+      </if>
+      <if test="jsyx != null" >
+        #{jsyx,jdbcType=VARCHAR},
+      </if>
+      <if test="shoucang != null" >
+        #{shoucang,jdbcType=VARCHAR},
+      </if>
+      <if test="zgyxfw != null" >
+        #{zgyxfw,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.online_re.domain.JobGsjl" >
+    update job_gsjl
+    <set >
+      <if test="zwlb != null" >
+        zwlb = #{zwlb,jdbcType=VARCHAR},
+      </if>
+      <if test="zwmc != null" >
+        zwmc = #{zwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ssbm != null" >
+        ssbm = #{ssbm,jdbcType=VARCHAR},
+      </if>
+      <if test="zdyxfw != null" >
+        zdyxfw = #{zdyxfw,jdbcType=VARCHAR},
+      </if>
+      <if test="gzcs != null" >
+        gzcs = #{gzcs,jdbcType=VARCHAR},
+      </if>
+      <if test="gzjy != null" >
+        gzjy = #{gzjy,jdbcType=VARCHAR},
+      </if>
+      <if test="xlyq != null" >
+        xlyq = #{xlyq,jdbcType=VARCHAR},
+      </if>
+      <if test="zwyh != null" >
+        zwyh = #{zwyh,jdbcType=VARCHAR},
+      </if>
+      <if test="zwms != null" >
+        zwms = #{zwms,jdbcType=VARCHAR},
+      </if>
+      <if test="gzdz != null" >
+        gzdz = #{gzdz,jdbcType=VARCHAR},
+      </if>
+      <if test="jsyx != null" >
+        jsyx = #{jsyx,jdbcType=VARCHAR},
+      </if>
+      <if test="shoucang != null" >
+        shoucang = #{shoucang,jdbcType=VARCHAR},
+      </if>
+      <if test="zgyxfw != null" >
+        zgyxfw = #{zgyxfw,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.online_re.domain.JobGsjl" >
+    update job_gsjl
+    set zwlb = #{zwlb,jdbcType=VARCHAR},
+      zwmc = #{zwmc,jdbcType=VARCHAR},
+      ssbm = #{ssbm,jdbcType=VARCHAR},
+      zdyxfw = #{zdyxfw,jdbcType=VARCHAR},
+      gzcs = #{gzcs,jdbcType=VARCHAR},
+      gzjy = #{gzjy,jdbcType=VARCHAR},
+      xlyq = #{xlyq,jdbcType=VARCHAR},
+      zwyh = #{zwyh,jdbcType=VARCHAR},
+      zwms = #{zwms,jdbcType=VARCHAR},
+      gzdz = #{gzdz,jdbcType=VARCHAR},
+      jsyx = #{jsyx,jdbcType=VARCHAR},
+      shoucang = #{shoucang,jdbcType=VARCHAR},
+      zgyxfw = #{zgyxfw,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.online_re.mapper.ImageAdsMapper" >
+  <resultMap id="BaseResultMap" type="com.example.online_re.domain.ImageAds" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="imagepath" property="imagepath" jdbcType="VARCHAR" />
+    <result column="imagealt" property="imagealt" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, imagepath, imagealt
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from image_ads
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from image_ads
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.online_re.domain.ImageAds" >
+    insert into image_ads (id, imagepath, imagealt
+      )
+    values (#{id,jdbcType=INTEGER}, #{imagepath,jdbcType=VARCHAR}, #{imagealt,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.online_re.domain.ImageAds" >
+    insert into image_ads
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="imagepath != null" >
+        imagepath,
+      </if>
+      <if test="imagealt != null" >
+        imagealt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="imagepath != null" >
+        #{imagepath,jdbcType=VARCHAR},
+      </if>
+      <if test="imagealt != null" >
+        #{imagealt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.online_re.domain.ImageAds" >
+    update image_ads
+    <set >
+      <if test="imagepath != null" >
+        imagepath = #{imagepath,jdbcType=VARCHAR},
+      </if>
+      <if test="imagealt != null" >
+        imagealt = #{imagealt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.online_re.domain.ImageAds" >
+    update image_ads
+    set imagepath = #{imagepath,jdbcType=VARCHAR},
+      imagealt = #{imagealt,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.online_re.mapper.CompanyMapper">
+  <resultMap id="BaseResultMap" type="com.example.online_re.domain.Company">
+    <id column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_development" jdbcType="VARCHAR" property="companyDevelopment" />
+    <result column="company_field" jdbcType="VARCHAR" property="companyField" />
+    <result column="company_Recruitment_type" jdbcType="VARCHAR" property="companyRecruitmentType" />
+    <result column="company_Minimum_education" jdbcType="VARCHAR" property="companyMinimumEducation" />
+    <result column="company_salary_range" jdbcType="VARCHAR" property="companySalaryRange" />
+    <result column="company_job_description" jdbcType="VARCHAR" property="companyJobDescription" />
+    <result column="company_workplace" jdbcType="VARCHAR" property="companyWorkplace" />
+    <result column="company_image" jdbcType="VARCHAR" property="companyImage" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    company_id, company_name, company_development, company_field, company_Recruitment_type, 
+    company_Minimum_education, company_salary_range, company_job_description, company_workplace, 
+    company_image
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from company
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.online_re.domain.Company">
+    insert into company (company_id, company_name, company_development, 
+      company_field, company_Recruitment_type, company_Minimum_education, 
+      company_salary_range, company_job_description, 
+      company_workplace, company_image)
+    values (#{companyId,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, #{companyDevelopment,jdbcType=VARCHAR}, 
+      #{companyField,jdbcType=VARCHAR}, #{companyRecruitmentType,jdbcType=VARCHAR}, #{companyMinimumEducation,jdbcType=VARCHAR}, 
+      #{companySalaryRange,jdbcType=VARCHAR}, #{companyJobDescription,jdbcType=VARCHAR}, 
+      #{companyWorkplace,jdbcType=VARCHAR}, #{companyImage,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.online_re.domain.Company">
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="companyDevelopment != null">
+        company_development,
+      </if>
+      <if test="companyField != null">
+        company_field,
+      </if>
+      <if test="companyRecruitmentType != null">
+        company_Recruitment_type,
+      </if>
+      <if test="companyMinimumEducation != null">
+        company_Minimum_education,
+      </if>
+      <if test="companySalaryRange != null">
+        company_salary_range,
+      </if>
+      <if test="companyJobDescription != null">
+        company_job_description,
+      </if>
+      <if test="companyWorkplace != null">
+        company_workplace,
+      </if>
+      <if test="companyImage != null">
+        company_image,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyDevelopment != null">
+        #{companyDevelopment,jdbcType=VARCHAR},
+      </if>
+      <if test="companyField != null">
+        #{companyField,jdbcType=VARCHAR},
+      </if>
+      <if test="companyRecruitmentType != null">
+        #{companyRecruitmentType,jdbcType=VARCHAR},
+      </if>
+      <if test="companyMinimumEducation != null">
+        #{companyMinimumEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="companySalaryRange != null">
+        #{companySalaryRange,jdbcType=VARCHAR},
+      </if>
+      <if test="companyJobDescription != null">
+        #{companyJobDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWorkplace != null">
+        #{companyWorkplace,jdbcType=VARCHAR},
+      </if>
+      <if test="companyImage != null">
+        #{companyImage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.online_re.domain.Company">
+    update company
+    <set>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyDevelopment != null">
+        company_development = #{companyDevelopment,jdbcType=VARCHAR},
+      </if>
+      <if test="companyField != null">
+        company_field = #{companyField,jdbcType=VARCHAR},
+      </if>
+      <if test="companyRecruitmentType != null">
+        company_Recruitment_type = #{companyRecruitmentType,jdbcType=VARCHAR},
+      </if>
+      <if test="companyMinimumEducation != null">
+        company_Minimum_education = #{companyMinimumEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="companySalaryRange != null">
+        company_salary_range = #{companySalaryRange,jdbcType=VARCHAR},
+      </if>
+      <if test="companyJobDescription != null">
+        company_job_description = #{companyJobDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWorkplace != null">
+        company_workplace = #{companyWorkplace,jdbcType=VARCHAR},
+      </if>
+      <if test="companyImage != null">
+        company_image = #{companyImage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.online_re.domain.Company">
+    update company
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      company_development = #{companyDevelopment,jdbcType=VARCHAR},
+      company_field = #{companyField,jdbcType=VARCHAR},
+      company_Recruitment_type = #{companyRecruitmentType,jdbcType=VARCHAR},
+      company_Minimum_education = #{companyMinimumEducation,jdbcType=VARCHAR},
+      company_salary_range = #{companySalaryRange,jdbcType=VARCHAR},
+      company_job_description = #{companyJobDescription,jdbcType=VARCHAR},
+      company_workplace = #{companyWorkplace,jdbcType=VARCHAR},
+      company_image = #{companyImage,jdbcType=VARCHAR}
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.online_re.domain.Company">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phonNum" jdbcType="INTEGER" property="phonnum" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="avator" jdbcType="VARCHAR" property="avator" />
+    <result column="createTime" jdbcType="DATE" property="createtime" />
+    <result column="update_Time" jdbcType="DATE" property="updateTime" />
+    <result column="vocation" jdbcType="VARCHAR" property="vocation" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.online_re.domain.Company">
+    insert into company (id, username, password, 
+      phonNum, email, introduction, 
+      location, avator, createTime, 
+      update_Time, vocation)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{phonnum,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
+      #{location,jdbcType=VARCHAR}, #{avator,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, 
+      #{updateTime,jdbcType=DATE}, #{vocation,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.online_re.domain.Company">
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phonnum != null">
+        phonNum,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="avator != null">
+        avator,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="updateTime != null">
+        update_Time,
+      </if>
+      <if test="vocation != null">
+        vocation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phonnum != null">
+        #{phonnum,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="avator != null">
+        #{avator,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="vocation != null">
+        #{vocation,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

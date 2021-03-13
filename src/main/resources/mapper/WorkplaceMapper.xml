@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.online_re.mapper.WorkplaceMapper" >
+  <resultMap id="BaseResultMap" type="com.example.online_re.domain.Workplace" >
+    <id column="W_id" property="wId" jdbcType="INTEGER" />
+    <result column="W_name" property="wName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    W_id, W_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from workplace
+    where W_id = #{wId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from workplace
+    where W_id = #{wId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.online_re.domain.Workplace" >
+    insert into workplace (W_id, W_name)
+    values (#{wId,jdbcType=INTEGER}, #{wName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.online_re.domain.Workplace" >
+    insert into workplace
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wId != null" >
+        W_id,
+      </if>
+      <if test="wName != null" >
+        W_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wId != null" >
+        #{wId,jdbcType=INTEGER},
+      </if>
+      <if test="wName != null" >
+        #{wName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.online_re.domain.Workplace" >
+    update workplace
+    <set >
+      <if test="wName != null" >
+        W_name = #{wName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where W_id = #{wId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.online_re.domain.Workplace" >
+    update workplace
+    set W_name = #{wName,jdbcType=VARCHAR}
+    where W_id = #{wId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.online_re.mapper.PositionMapper" >
+  <resultMap id="BaseResultMap" type="com.example.online_re.domain.Position" >
+    <id column="id" property="id" jdbcType="DECIMAL" />
+    <result column="comapny_id" property="comapnyId" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="job_area" property="jobArea" jdbcType="VARCHAR" />
+    <result column="salary" property="salary" jdbcType="DECIMAL" />
+    <result column="job_contacts" property="jobContacts" jdbcType="VARCHAR" />
+    <result column="job_phone" property="jobPhone" jdbcType="VARCHAR" />
+    <result column="job_email" property="jobEmail" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="creator_id" property="creatorId" jdbcType="BIGINT" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.online_re.domain.Position" extends="BaseResultMap" >
+    <result column="test_content" property="testContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, comapny_id, title, job_area, salary, job_contacts, job_phone, job_email, status, 
+    creator_id, update_time, create_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    test_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from position
+    where id = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from position
+    where id = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.example.online_re.domain.Position" >
+    insert into position (id, comapny_id, title, 
+      job_area, salary, job_contacts, 
+      job_phone, job_email, status, 
+      creator_id, update_time, create_time, 
+      test_content)
+    values (#{id,jdbcType=DECIMAL}, #{comapnyId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{jobArea,jdbcType=VARCHAR}, #{salary,jdbcType=DECIMAL}, #{jobContacts,jdbcType=VARCHAR}, 
+      #{jobPhone,jdbcType=VARCHAR}, #{jobEmail,jdbcType=VARCHAR}, #{status,jdbcType=BIT}, 
+      #{creatorId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{testContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.online_re.domain.Position" >
+    insert into position
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="comapnyId != null" >
+        comapny_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="jobArea != null" >
+        job_area,
+      </if>
+      <if test="salary != null" >
+        salary,
+      </if>
+      <if test="jobContacts != null" >
+        job_contacts,
+      </if>
+      <if test="jobPhone != null" >
+        job_phone,
+      </if>
+      <if test="jobEmail != null" >
+        job_email,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="creatorId != null" >
+        creator_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="testContent != null" >
+        test_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="comapnyId != null" >
+        #{comapnyId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="jobArea != null" >
+        #{jobArea,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null" >
+        #{salary,jdbcType=DECIMAL},
+      </if>
+      <if test="jobContacts != null" >
+        #{jobContacts,jdbcType=VARCHAR},
+      </if>
+      <if test="jobPhone != null" >
+        #{jobPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="jobEmail != null" >
+        #{jobEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="creatorId != null" >
+        #{creatorId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="testContent != null" >
+        #{testContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.online_re.domain.Position" >
+    update position
+    <set >
+      <if test="comapnyId != null" >
+        comapny_id = #{comapnyId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="jobArea != null" >
+        job_area = #{jobArea,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null" >
+        salary = #{salary,jdbcType=DECIMAL},
+      </if>
+      <if test="jobContacts != null" >
+        job_contacts = #{jobContacts,jdbcType=VARCHAR},
+      </if>
+      <if test="jobPhone != null" >
+        job_phone = #{jobPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="jobEmail != null" >
+        job_email = #{jobEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="creatorId != null" >
+        creator_id = #{creatorId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="testContent != null" >
+        test_content = #{testContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.online_re.domain.Position" >
+    update position
+    set comapny_id = #{comapnyId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      job_area = #{jobArea,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=DECIMAL},
+      job_contacts = #{jobContacts,jdbcType=VARCHAR},
+      job_phone = #{jobPhone,jdbcType=VARCHAR},
+      job_email = #{jobEmail,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIT},
+      creator_id = #{creatorId,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      test_content = #{testContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.online_re.domain.Position" >
+    update position
+    set comapny_id = #{comapnyId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      job_area = #{jobArea,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=DECIMAL},
+      job_contacts = #{jobContacts,jdbcType=VARCHAR},
+      job_phone = #{jobPhone,jdbcType=VARCHAR},
+      job_email = #{jobEmail,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIT},
+      creator_id = #{creatorId,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>
